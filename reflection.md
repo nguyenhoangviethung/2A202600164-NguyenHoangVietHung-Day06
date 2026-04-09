@@ -1,18 +1,23 @@
 # Individual reflection — Nguyễn Hoàng Việt Hùng (2A202600164)
 
 ## 1. Role
- + prompt engineer. Phụ trách cấu hình flow, implement chatbot và viết system prompt.
+ + agent workflow, prompt engineer, backend support
 
 ## 2. Đóng góp cụ thể
 - Thiết kế agent flow gồm 5 node: Mood Parsin -> Clarify Node -> Toolcalling -> Selection -> Suggestion
 - Viết system prompt cho mỗi node, phải sửa nhiều lần để node hoàn thành đúng nhiệm vụ
 
 ## 3. SPEC mạnh/yếu
-- Mạnh nhất: failure modes — nhóm nghĩ ra được case "triệu chứng chung chung"
-  mà AI gợi ý quá rộng, và có mitigation cụ thể (hỏi thêm câu follow-up)
-- Yếu nhất: ROI — 3 kịch bản thực ra chỉ khác số user, assumption gần giống nhau.
-  Nên tách assumption rõ hơn (VD: conservative = chỉ dùng ở 1 chi nhánh,
-  optimistic = rollout toàn hệ thống)
+Điểm mạnh nhất (The Strongest Points)
+- Định nghĩa rõ ràng "Kill Criteria" (Tiêu chí khai tử)
+Việc đo lường rõ ràng Unit Economics (Chi phí trên mỗi đơn vị xử lý) chứng tỏ team hiểu rõ bài toán kinh doanh chứ không chỉ biết code AI.
+
+Điểm yếu nhất (The Weakest Points & Cần cải thiện)
+- Mâu thuẫn ở "Correction Path" (Luồng sửa lỗi) và "Session Memory"
+
+- Ở Phần 2, spec mô tả luồng người dùng nhắn "Phim này bạo lực quá, tôi cần nhãn PG-13" và AI trả lời lại. Nhưng ở Phần 6, phần Giới hạn lại ghi: "Chưa có Session Memory hoàn chỉnh (chỉ giải quyết tốt Single-turn query)". Không có bộ nhớ (Memory), khi người dùng chat câu thứ 2 (sửa lỗi), Agent sẽ không biết "phim này" là phim nào, dẫn đến đứt gãy hội thoại. Luồng Correction Path hiện tại mô tả mang tính lý thuyết nhưng thực tế kỹ thuật MVP chưa đáp ứng được.
+
+- Cách cải thiện: Cần bổ sung ngay một cơ chế lưu trữ Context ngắn hạn (ví dụ: truyền lại mảng top_k cũ vào input của lượt chat mới) để AI có ngữ cảnh sửa sai.
 
 ## 4. Đóng góp khác
 - Test prompt với những kịch bản khác nhau, ghi kết quả vào prompt-tests.jsonm, log vào prompt-tests-log.log, screenshot vào prompt-tests-screenshot folder.
