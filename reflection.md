@@ -1,12 +1,11 @@
 # Individual reflection — Nguyễn Hoàng Việt Hùng (2A202600164)
 
 ## 1. Role
- + prompt engineer. Phụ trách cấu hình flow, implement chatbot; backend cho prototype viết system prompt.
+ + prompt engineer. Phụ trách cấu hình flow, implement chatbot và viết system prompt.
 
 ## 2. Đóng góp cụ thể
 - Thiết kế agent flow gồm 5 node: Mood Parsin -> Clarify Node -> Toolcalling -> Selection -> Suggestion
 - Viết system prompt cho mỗi node, phải sửa nhiều lần để node hoàn thành đúng nhiệm vụ
-- Viết api đẩy lên frontend
 
 ## 3. SPEC mạnh/yếu
 - Mạnh nhất: failure modes — nhóm nghĩ ra được case "triệu chứng chung chung"
@@ -18,6 +17,7 @@
 ## 4. Đóng góp khác
 - Test prompt với những kịch bản khác nhau, ghi kết quả vào prompt-tests.jsonm, log vào prompt-tests-log.log, screenshot vào prompt-tests-screenshot folder.
 - Từ cấu trúc flow tạo prompt để sinh slide bằng Gamma.ai
+- Hỗ trợ backend
 ## 5. Điều học được
 - Tư duy phải thay đổi. Trước đây em thường tư duy theo hướng mình phải làm chức năng này, chức này hay, chức năng này cao siêu mà không nghĩ đến user. Sản phẩm phải phục vụ user, bắt được nỗi đau của họ. Hackathon này nhóm em chỉ build 1 chức năng duy nhất nhưng cũng cảm thấy hài lòng vì nó đã đúng khá chính xác nhu cầu người dùng 
 
